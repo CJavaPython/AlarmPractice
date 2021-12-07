@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -20,6 +21,7 @@ import java.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         //using binding.ID.function();
         //binding.recView.setLayoutManager(new LinearLayoutManager(this));
+
+        PowerManager powerManager = (PowerManager) getSystemService((Context.POWER_SERVICE));
+        PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "My:Tag");
+        wakeLock.acquire(5000);
+
         setContentView(view);
     }
 
