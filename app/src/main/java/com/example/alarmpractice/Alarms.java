@@ -10,11 +10,13 @@ public class Alarms {
     boolean FriRepeat;
     boolean SatRepeat;
     boolean SunRepeat;
+    long time;
     int hour;
     int minutes;
 
-    public Alarms(int id, String alarmName, boolean monRepeat, boolean tueRepeat, boolean wedRepeat, boolean thuRepeat, boolean friRepeat, boolean satRepeat, boolean sunRepeat, int hour, int minutes) {
+    public Alarms(int id, String alarmName, boolean monRepeat, boolean tueRepeat, boolean wedRepeat, boolean thuRepeat, boolean friRepeat, boolean satRepeat, boolean sunRepeat, long time, int hour, int minutes) {
         this.id = id;
+        this.time = time;
         this.alarmName = alarmName;
         MonRepeat = monRepeat;
         TueRepeat = tueRepeat;
@@ -23,6 +25,7 @@ public class Alarms {
         FriRepeat = friRepeat;
         SatRepeat = satRepeat;
         SunRepeat = sunRepeat;
+        this.time = time;
         this.hour = hour;
         this.minutes = minutes;
     }
@@ -98,7 +101,13 @@ public class Alarms {
     public void setSunRepeat(boolean sunRepeat) {
         SunRepeat = sunRepeat;
     }
+    public long getTime() {
+        return this.time;
+    }
 
+    public void setTime(long time) {
+        this.time = time;
+    }
     public int getHour() {
         return hour;
     }

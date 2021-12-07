@@ -1,12 +1,19 @@
 package com.example.alarmpractice;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +30,35 @@ public class Fragment1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    RecyclerView recyclerView;
+    AlarmAdapter adapter;
+
+    Context context;
+    onTabItemSelectedListener listener;
+
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+
+        if (context instanceof onTabItemSelectedListener) {
+            listener = (onTabItemSelectedListener) context;
+        }
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (context==null) {
+            context = null;
+            listener = null;
+        }
+    }
+
+
 
     public Fragment1() {
         // Required empty public constructor
@@ -60,12 +96,41 @@ public class Fragment1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment1, container, false);
+
         initUI(rootView);
 
         return rootView;
     }
 
     private void initUI(ViewGroup rootView) {
+        Button addAlarmButton = rootView.findViewById(R.id.addAlarmButton);
+        addAlarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onTabSelected(1);
+                }
+            }
+        });
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new AlarmAdapter();
+
+        adapter.addItem(new Alarms(0, "hello", false, false, false, false, false, false, false, 1000, 0, 0));
+        adapter.addItem(new Alarms(1, "world", false, false, false, false, false, false, false, 2000, 0, 0));
+
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new OnAlarmItemClickListener() {
+            @Override
+            public void onItemClick(AlarmAdapter.ViewHolder holder, View view, int position) {
+                Alarms item = adapter.getItem(position);
+                Toast.makeText(getContext(), "아이템 선택됨" + item.getAlarmName(), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 }

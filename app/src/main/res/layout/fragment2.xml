@@ -9,6 +9,7 @@
     android:scrollbarStyle="outsideOverlay">
 
     <LinearLayout
+        android:id="@+id/layout1"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,14 +18,32 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginBottom="8dp"
-            android:text="@string/time"
-            tools:text="@string/time"/>
-
+            android:layout_height="wrap_content" >
+            <Button
+                android:id="@+id/saveAlarmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/select_button"
+                android:layout_marginBottom="8dp"
+                android:text="저장하기"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#00000000"
+                app:backgroundTintMode="add" />
+            <Button
+                android:id="@+id/deleteAlarmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/select_button"
+                android:layout_marginBottom="8dp"
+                android:text="삭제하기"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#00000000"
+                app:backgroundTintMode="add" />
+        </RelativeLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -80,15 +99,9 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/divider" />
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:columnCount="2">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/monday"
                 tools:text="@string/monday"
@@ -98,29 +111,25 @@
                 android:id="@+id/edit_alarm_mon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/tuesday"
                 tools:text="@string/tuesday"
                 />
 
             <CheckBox
-                android:id="@+id/edit_alarm_tues"
+                android:id="@+id/edit_alarm_tue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/wednesday"
                 tools:text="@string/wednesday"
@@ -130,29 +139,25 @@
                 android:id="@+id/edit_alarm_wed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/thursday"
                 tools:text="@string/thursday"
                 />
 
             <CheckBox
-                android:id="@+id/edit_alarm_thurs"
+                android:id="@+id/edit_alarm_thu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/friday"
                 tools:text="@string/friday"
@@ -162,13 +167,11 @@
                 android:id="@+id/edit_alarm_fri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/saturday"
                 tools:text="@string/saturday"
@@ -178,13 +181,11 @@
                 android:id="@+id/edit_alarm_sat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_gravity="center_vertical|fill_horizontal"
                 android:layout_marginBottom="8dp"
                 android:text="@string/sunday"
                 tools:text="@string/sunday"
@@ -194,11 +195,8 @@
                 android:id="@+id/edit_alarm_sun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_gravity="center_vertical"/>
+                android:layout_marginBottom="8dp"/>
 
-
-        </GridLayout>
 
     </LinearLayout>
 
