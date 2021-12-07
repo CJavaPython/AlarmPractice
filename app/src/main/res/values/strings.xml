@@ -3,5 +3,27 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
-
+    <!-- Edit Alarm Activity/Fragment -->
+    <string name="time">시간</string>
+    <string name="label">알람 제목</string>
+    <string name="days">요일</string>
+    <string name="edit_alarm">Edit Alarm</string>
+    <string name="add_alarm">Add Alarm</string>
+    <string name="add_label_hint">제목</string>
+    <string name="update_complete">Changes Saved</string>
+    <string name="update_failed">Update Failed</string>
+    <string name="delete_complete">Alarm Deleted</string>
+    <string name="delete_failed">Delete Failed</string>
+    <string name="delete_dialog_title">Confirm Delete Alarm</string>
+    <string name="delete_dialog_content">Are you sure you would like to delete this alarm?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <!-- Days -->
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="sunday">일</string>
 </resources>
