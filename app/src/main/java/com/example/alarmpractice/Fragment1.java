@@ -129,6 +129,9 @@ public class Fragment1 extends Fragment {
             public void onItemClick(AlarmAdapter.ViewHolder holder, View view, int position) {
                 Alarms item = adapter.getItem(position);
                 Toast.makeText(getContext(), "아이템 선택됨" + item.getAlarmName(), Toast.LENGTH_LONG).show();
+                if (listener != null) {
+                    listener.showFragment2(item);
+                }
 
             }
         });

@@ -101,5 +101,13 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
         }
 
     }
+    public void showFragment2(Alarms item) {
 
+        fragment2 = new Fragment2();
+        fragment2.setItem(item);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment2).commit();
+
+    }
 }

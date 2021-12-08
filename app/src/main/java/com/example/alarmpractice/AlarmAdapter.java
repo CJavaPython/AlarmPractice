@@ -102,26 +102,8 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
         }
 
         public void setItem(Alarms item) {
-            /*
-            //time picker setting
-            final Calendar c = Calendar.getInstance();
-            c.setTimeInMillis(item.getTime());
 
-            final int minutes = c.get(Calendar.MINUTE);
-            final int hours = c.get(Calendar.HOUR_OF_DAY);
-
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                edit_alarm_time_picker.setMinute(minutes);
-                edit_alarm_time_picker.setHour(hours);
-            } else {
-                edit_alarm_time_picker.setCurrentMinute(minutes);
-                edit_alarm_time_picker.setCurrentHour(hours);
-            }
-
-            edit_alarm_label.setText(item.getAlarmName());
-
-             */
-            alarmTime.setText("00:00");
+            alarmTime.setText(Long.toString(item.getTime()));
             alarmLabel.setText(item.getAlarmName());
 
         }

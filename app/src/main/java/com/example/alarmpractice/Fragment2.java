@@ -1,6 +1,10 @@
 package com.example.alarmpractice;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +45,11 @@ public class Fragment2 extends Fragment {
 
     Context context;
     onTabItemSelectedListener listener;
+    int mMode = AppConstants.MODE_INSERT;
+    int _id=-1;
+    int alarmIndex=0;
+
+    Alarms item;
 
     @Override
     public void onAttach(Context context) {
@@ -97,6 +115,14 @@ public class Fragment2 extends Fragment {
                 if (listener == null) {
                     listener.onTabSelected(0);
                 }
+
+                SharedPreferences sharedPreferences = context.getSharedPreferences("daily alarm", MODE_PRIVATE);
+                long millis = sharedPreferences.getLong("nextNotifyTime", Calendar.getInstance().getTimeInMillis());
+
+                Calendar nextNotifyTime = new GregorianCalendar();
+                nextNotifyTime.setTimeInMillis(millis);
+
+
             }
         });
         Button deleteAlarmButton = rootView.findViewById(R.id.deleteAlarmButton);
@@ -110,5 +136,44 @@ public class Fragment2 extends Fragment {
             }
         });
 
+        //time picker setting
+        TimePicker edit_alarm_time_picker = (TimePicker) rootView.findViewById(R.id.edit_alarm_time_picker);
+
+        edit_alarm_time_picker.setIs24HourView(true);
+        //앞서 설정한 값으로 보여주기
+        //없으면 디폴트 값은 현재 시간
+        SharedPreferences sharedPreferences = context.getSharedPreferences("daily alarm", MODE_PRIVATE);
+        long millis = sharedPreferences.getLong("nextNotifyTime", Calendar.getInstance().getTimeInMillis());
+
+        Calendar nextNotifyTime = new GregorianCalendar();
+        nextNotifyTime.setTimeInMillis(millis);
+
+        Date nextDate = nextNotifyTime.getTime();
+        String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(nextDate);
+
+
+        // 이전 설정값으로 Timepicker 초기화
+        Date currentTime = nextNotifyTime.getTime();
+        SimpleDateFormat HourFormat = new SimpleDateFormat("kk", Locale.getDefault());
+        SimpleDateFormat MinuteFormat = new SimpleDateFormat("mm", Locale.getDefault());
+
+        int pre_hour = Integer.parseInt(HourFormat.format(currentTime));
+        int pre_minute = Integer.parseInt(MinuteFormat.format(currentTime));
+
+
+        if (Build.VERSION.SDK_INT >= 23 ){
+            edit_alarm_time_picker.setHour(pre_hour);
+            edit_alarm_time_picker.setMinute(pre_minute);
+        }
+        else{
+            edit_alarm_time_picker.setCurrentHour(pre_hour);
+            edit_alarm_time_picker.setCurrentMinute(pre_minute);
+        }
+
+
+    }
+
+    public void setItem(Alarms item) {
+        this.item = item;
     }
 }
