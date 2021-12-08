@@ -27,30 +27,30 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/contentsTextView"
+                android:id="@+id/alarmTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="00 : 00"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="00 : 00"
                 android:textSize="24sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:id="@+id/weatherImageView"
+                    android:id="@+id/alarmImage"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/alarm_icon" />
 
                 <TextView
-                    android:id="@+id/locationTextView"
+                    android:id="@+id/alarmLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -58,12 +58,13 @@
                     android:text="알람 제목"
                     android:textSize="16sp" />
 
-                <RadioButton
+                <Switch
                     android:id="@+id/alarmOnOff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    />
 
 
             </RelativeLayout>

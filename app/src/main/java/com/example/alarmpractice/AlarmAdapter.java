@@ -6,11 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,7 +24,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
 
     ArrayList<Alarms> items = new ArrayList<Alarms>();
     OnAlarmItemClickListener listener;
-    int layoutType = 0;
 
     @NonNull
     @Override
@@ -27,7 +31,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.alarm_item, viewGroup, false);
 
-        return new ViewHolder(itemView, this, layoutType);
+        return new ViewHolder(itemView, this);
     }
 
     @Override
@@ -63,42 +67,27 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
         }
     }
 
-    public void switchLayout(int position) {
-        layoutType = position;
-    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout layout1;
 
-        TimePicker edit_alarm_time_picker;
+        TextView alarmTime;
 
-        EditText edit_alarm_label;
+        TextView alarmLabel;
 
-        CheckBox edit_alarm_mon;
-        CheckBox edit_alarm_tue;
-        CheckBox edit_alarm_wed;
-        CheckBox edit_alarm_thu;
-        CheckBox edit_alarm_fri;
-        CheckBox edit_alarm_sat;
-        CheckBox edit_alarm_sun;
+        Switch alarmOnOff;
 
-        public ViewHolder(View itemView, final OnAlarmItemClickListener listener, int layoutType) {
+        public ViewHolder(View itemView, final OnAlarmItemClickListener listener) {
             super(itemView);
 
             layout1 = itemView.findViewById(R.id.layout1);
 
-            edit_alarm_time_picker = itemView.findViewById(R.id.edit_alarm_time_picker);
+            alarmTime = itemView.findViewById(R.id.alarmTime);
+            alarmLabel = itemView.findViewById(R.id.alarmLabel);
 
 
-            edit_alarm_label = itemView.findViewById(R.id.edit_alarm_label);
+            alarmOnOff = itemView.findViewById(R.id.alarmOnOff);
 
-            edit_alarm_mon = itemView.findViewById(R.id.edit_alarm_mon);
-            edit_alarm_tue = itemView.findViewById(R.id.edit_alarm_tue);
-            edit_alarm_wed = itemView.findViewById(R.id.edit_alarm_wed);
-            edit_alarm_thu = itemView.findViewById(R.id.edit_alarm_thu);
-            edit_alarm_fri = itemView.findViewById(R.id.edit_alarm_fri);
-            edit_alarm_sat = itemView.findViewById(R.id.edit_alarm_sat);
-            edit_alarm_sun = itemView.findViewById(R.id.edit_alarm_sun);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,6 +102,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
         }
 
         public void setItem(Alarms item) {
+            /*
             //time picker setting
             final Calendar c = Calendar.getInstance();
             c.setTimeInMillis(item.getTime());
@@ -129,6 +119,11 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
             }
 
             edit_alarm_label.setText(item.getAlarmName());
+
+             */
+            alarmTime.setText("00:00");
+            alarmLabel.setText(item.getAlarmName());
+
         }
 
 

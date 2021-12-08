@@ -87,11 +87,6 @@ public class MainActivity extends AppCompatActivity implements onTabItemSelected
                 return false;
             }
         });
-
-        //PowerManager powerManager = (PowerManager) getSystemService((Context.POWER_SERVICE));
-        //PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "My:Tag");
-        //wakeLock.acquire(5000);
-
         setContentView(view);
     }
     public void onTabSelected(int position) {

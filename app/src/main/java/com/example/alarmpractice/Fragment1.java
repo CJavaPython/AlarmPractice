@@ -119,8 +119,8 @@ public class Fragment1 extends Fragment {
 
         adapter = new AlarmAdapter();
 
-        adapter.addItem(new Alarms(0, "hello", false, false, false, false, false, false, false, 1000, 0, 0));
-        adapter.addItem(new Alarms(1, "world", false, false, false, false, false, false, false, 2000, 0, 0));
+        adapter.addItem(new Alarms(0, "hello", 1000));
+        adapter.addItem(new Alarms(1, "world", 2000));
 
         recyclerView.setAdapter(adapter);
 
@@ -129,6 +129,7 @@ public class Fragment1 extends Fragment {
             public void onItemClick(AlarmAdapter.ViewHolder holder, View view, int position) {
                 Alarms item = adapter.getItem(position);
                 Toast.makeText(getContext(), "아이템 선택됨" + item.getAlarmName(), Toast.LENGTH_LONG).show();
+
             }
         });
 
